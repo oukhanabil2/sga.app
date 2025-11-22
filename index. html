@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGA - Système Gestion Agents</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <h1>SGA</h1>
+            <p>Système de Gestion des Agents</p>
+        </div>
+    </header>
+    
+    <nav class="main-nav">
+        <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+        <button class="nav-btn" data-page="agents">Agents</button>
+        <button class="nav-btn" data-page="planning">Planning</button>
+    </nav>
+
+    <main class="main-content">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Agents Actifs</h3>
+                <p class="stat-number">3</p>
+            </div>
+        </div>
+        
+        <div class="quick-actions">
+            <h3>Actions Rapides</h3>
+            <button class="action-btn">Nouvel Agent</button>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
