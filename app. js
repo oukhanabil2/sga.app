@@ -1,19 +1,19 @@
-// Configuration Firebase - À COMPLÉTER AVEC VOS VRAIES VALEURS
+// Configuration Firebase - VRAIES VALEURS
 const firebaseConfig = {
-  apiKey: "COLLEZ-VOTRE-API-KEY-ICI",
-  authDomain: "COLLEZ-VOTRE-AUTH-DOMAIN-ICI",
-  projectId: "COLLEZ-VOTRE-PROJECT-ID-ICI",
-  storageBucket: "COLLEZ-VOTRE-STORAGE-BUCKET-ICI",
-  messagingSenderId: "COLLEZ-VOTRE-SENDER-ID-ICI",
-  appId: "COLLEZ-VOTRE-APP-ID-ICI"
+    apiKey: "AIzaSyDG02nDx10ubjguVo_uhD",
+    authDomain: "sga-app-92d2c.firebaseapp.com",
+    projectId: "sga-app-92d2c",
+    storageBucket: "sga-app-92d2c.firebasestorage.app", 
+    messagingSenderId: "854271262100",
+    appId: "1:854271262100:web:af6f9048"
 };
 
 // SGA - Système de Gestion des Agents avec Firebase
 class SGASystem {
     constructor() {
-        this.agents = [];
-        this.currentPage = 'dashboard';
-        this.initFirebase();
+    this.agents = [];
+    this.currentPage = 'dashboard';
+    this.initFirebase();
     }
 
     async initFirebase() {
