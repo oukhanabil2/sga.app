@@ -16,27 +16,8 @@
             <p>Système de Gestion des Agents</p>
         </div>
     </header>
-    
-    <nav class="main-nav">
-        <button class="nav-btn active" data-page="dashboard">Dashboard</button>
-        <button class="nav-btn" data-page="agents">Agents</button>
-        <button class="nav-btn" data-page="planning">Planning</button>
-    </nav>
-
     <main class="main-content">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Agents Actifs</h3>
-                <p class="stat-number">3</p>
-            </div>
-        </div>
-        
-        <div class="quick-actions">
-            <h3>Actions Rapides</h3>
-            <button class="action-btn">Nouvel Agent</button>
-        </div>
-    </main>
-
+</main>
     <script src="app.js"></script>
 </body>
 </html>
