@@ -1,0 +1,147 @@
+// SGA - Système de Gestion des Agents
+class SGASystem {
+    constructor() {
+        this.agents = [];
+        this.currentPage = 'dashboard';
+        this.init();
+    }
+
+    init() {
+        this.setupEventListeners();
+        this.loadAgents();
+        this.displayAgents();
+    }
+
+    setupEventListeners() {
+        // Navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                this.switchPage(e.target.dataset.page);
+            });
+        });
+
+        // Actions rapides
+        const actionBtn = document.querySelector('.action-btn');
+        if (actionBtn) {
+            actionBtn.addEventListener('click', () => {
+                this.addNewAgent();
+            });
+        }
+    }
+
+    switchPage(page) {
+        this.currentPage = page;
+        
+        // Mettre à jour la navigation
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.dataset.page === page) {
+                btn.classList.add('active');
+            }
+        });
+
+        this.updateContent();
+    }
+
+    updateContent() {
+        const content = document.querySelector('.main-content');
+        if (this.currentPage === 'agents') {
+            content.innerHTML = this.getAgentsPageHTML();
+        } else if (this.currentPage === 'planning') {
+            content.innerHTML = this.getPlanningPageHTML();
+        } else {
+            content.innerHTML = this.getDashboardHTML();
+        }
+        
+        this.setupEventListeners();
+    }
+
+    getDashboardHTML() {
+        return `
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Agents Actifs</h3>
+                    <p class="stat-number">${this.agents.length}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Présents Aujourd'hui</h3>
+                    <p class="stat-number">${this.agents.filter(a => a.present).length}</p>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <h3>Actions Rapides</h3>
+                <button class="action-btn">Nouvel Agent</button>
+            </div>
+        `;
+    }
+
+    getAgentsPageHTML() {
+        return `
+            <div class="page-header">
+                <h2>Gestion des Agents</h2>
+                <button class="action-btn" style="width: auto;">+ Ajouter Agent</button>
+            </div>
+            <div class="agents-list">
+                ${this.agents.map(agent => `
+                    <div class="agent-card">
+                        <h4>${agent.name}</h4>
+                        <p>${agent.role}</p>
+                        <span class="status ${agent.present ? 'present' : 'absent'}">
+                            ${agent.present ? '🟢 Présent' : '🔴 Absent'}
+                        </span>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    getPlanningPageHTML() {
+        return `
+            <div class="page-header">
+                <h2>Planning</h2>
+            </div>
+            <div class="planning-grid">
+                <p>Fonctionnalité planning en développement...</p>
+            </div>
+        `;
+    }
+
+    loadAgents() {
+        // Données exemple
+        this.agents = [
+            { id: 1, name: 'Jean Dupont', role: 'Agent de sécurité', present: true },
+            { id: 2, name: 'Marie Martin', role: 'Superviseur', present: true },
+            { id: 3, name: 'Pierre Lambert', role: 'Agent de terrain', present: false }
+        ];
+    }
+
+    displayAgents() {
+        const statNumber = document.querySelector('.stat-number');
+        if (statNumber) {
+            statNumber.textContent = this.agents.length;
+        }
+    }
+
+    addNewAgent() {
+        const name = prompt('Nom du nouvel agent:');
+        if (name) {
+            const newAgent = {
+                id: this.agents.length + 1,
+                name: name,
+                role: 'Nouvel agent',
+                present: true
+            };
+            this.agents.push(newAgent);
+            this.displayAgents();
+            this.updateContent();
+            alert(`Agent ${name} ajouté avec succès!`);
+        }
+    }
+}
+
+// Initialiser l'application
+document.addEventListener('DOMContentLoaded', () => {
+    new SGASystem();
+});
