@@ -3,7 +3,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyDG02nDx10ubjguVo_uhD",
     authDomain: "sga-app-92d2c.firebaseapp.com",
     projectId: "sga-app-92d2c",
-    storageBucket: "sga-app-92d2c.firebasestorage.app", 
+    storageBucket: "sga-app-92d2c.firebasestorage.app",
     messagingSenderId: "854271262100",
     appId: "1:854271262100:web:af6f9048"
 };
@@ -11,9 +11,9 @@ const firebaseConfig = {
 // SGA - Système de Gestion des Agents avec Firebase
 class SGASystem {
     constructor() {
-    this.agents = [];
-    this.currentPage = 'dashboard';
-    this.initFirebase();
+        this.agents = [];
+        this.currentPage = 'dashboard';
+        this.initFirebase();
     }
 
     async initFirebase() {
